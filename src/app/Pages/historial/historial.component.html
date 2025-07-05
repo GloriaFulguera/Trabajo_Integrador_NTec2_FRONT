@@ -1,4 +1,5 @@
-<table class="table">
+<div class="container mt-3" style="max-width: 1080px;">
+  <table class="table table-bordered table-sm align-middle text-center">
   <thead>
     <tr>
       <th scope="col">Fecha</th>
@@ -9,13 +10,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
+    <tr *ngFor="let x of DataSource">
+      <th scope="row">{{x.fecha_alta}}</th>
+      <td>{{x.monto}}</td>
+      <td>{{x.cuotas}}</td>
+      <td>{{x.estado}}</td>
+      <td>
+        <button class="btn btn-primary">Detalles</button>
+      </td>
+      <!-- Aca le puedo meter botones que aparezcan segun el rol -->
     </tr>
 
   </tbody>
 </table>
+</div>
