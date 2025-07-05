@@ -2,10 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SolicitudesComponent } from './Pages/solicitudes/solicitudes.component';
 import { HistorialComponent } from './Pages/historial/historial.component';
+import { LoginComponent } from './Components/login/login.component';
+import { ContainerComponent } from './Components/container/container.component';
 
 const routes: Routes = [
-  {path:"solicitud",component:SolicitudesComponent},
-  {path:"historial",component:HistorialComponent}
+  { path: "", component: LoginComponent },
+  { path: "login", component: LoginComponent },
+  { path: "home", component: ContainerComponent,
+    children: [
+      { path: "solicitud", component: SolicitudesComponent },
+      { path: "historial", component: HistorialComponent }
+    ]
+  }
 ];
 
 @NgModule({
