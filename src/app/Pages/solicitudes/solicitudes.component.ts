@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SolicitudService } from '../../Services/solicitud.service';
 
 @Component({
   selector: 'app-solicitudes',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './solicitudes.component.css'
 })
 export class SolicitudesComponent {
-
+  constructor(private service:SolicitudService){}
 }

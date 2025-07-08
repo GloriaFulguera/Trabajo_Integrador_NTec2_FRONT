@@ -11,6 +11,7 @@ import { ContainerComponent } from './Components/container/container.component';
 import { SolicitudesComponent } from './Pages/solicitudes/solicitudes.component';
 import { HistorialComponent } from './Pages/historial/historial.component';
 import { LoginComponent } from './Components/login/login.component';
+import { HomeComponent } from './Pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginComponent } from './Components/login/login.component';
     ContainerComponent,
     SolicitudesComponent,
     HistorialComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

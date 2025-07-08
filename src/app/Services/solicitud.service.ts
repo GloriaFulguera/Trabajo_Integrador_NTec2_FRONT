@@ -11,4 +11,7 @@ export class SolicitudService {
   GetSolicitudes(){
     return this.http.get(this.url+"GetSolicitudes");
   }
+  CreateSolicitud(solicitud:any){
+    return this.http.post(this.url+"CreateSolicitud",solicitud);
+  }
 }
