@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit{
 
   constructor(private service:LoginService,private router:Router){}
   ngOnInit(): void {
-    localStorage.removeItem("user_state")
+    localStorage.removeItem("user_state");
+    localStorage.removeItem("user_dni")
   }
   Login(){
     //OJO, este no funciona si usuario va en caracteres
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit{
       this.DataSource=x;
       if(this.DataSource.result==true){
         localStorage.setItem("user_state","true");
-        this.router.navigate(['home/solicitud'])
+        localStorage.setItem("user_dni",this.usuario);
+        this.router.navigate(['home/']);
       }
       else{
         this.mensaje=this.DataSource.mensaje;

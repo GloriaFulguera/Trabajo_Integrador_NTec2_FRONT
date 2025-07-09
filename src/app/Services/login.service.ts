@@ -11,4 +11,7 @@ export class LoginService {
   Login(obj:any){
     return this.http.post(this.url+"Login",obj);
   }
+  GetUser(dni:any){
+    return this.http.get(this.url+"GetUsuarios?dni="+dni);
+  }
 }

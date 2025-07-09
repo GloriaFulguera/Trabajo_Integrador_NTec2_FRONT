@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SolicitudService } from '../../Services/solicitud.service';
+import { LoginService } from '../../Services/login.service';
 
 @Component({
   selector: 'app-solicitudes',
@@ -7,6 +8,59 @@ import { SolicitudService } from '../../Services/solicitud.service';
   templateUrl: './solicitudes.component.html',
   styleUrl: './solicitudes.component.css'
 })
-export class SolicitudesComponent {
-  constructor(private service:SolicitudService){}
+export class SolicitudesComponent implements OnInit{
+  Dni=localStorage.getItem("user_dni");
+  Nombre:any;
+  Apellido:any;
+  Edad:any;
+  Ingresos:any;
+  Empleo:any;
+  Monto:any;
+  Cuotas:any;
+  Motivo:any;
+  DataSource:any;
+  constructor(private service:SolicitudService,private loginService:LoginService){}
+
+  ngOnInit(): void {
+    this.GetUser();
+  }
+
+  GetUser(){
+    this.loginService.GetUser(this.Dni).subscribe(x=>{
+      this.DataSource=x;
+      console.log(this.DataSource);
+      console.log(typeof(this.DataSource))
+      this.Nombre = this.DataSource[0].nombre;
+      this.Apellido = this.DataSource[0].apellido;
+    })
+  }
+  CreateSolicitud(){
+    let solicitud={
+      dni:Number(this.Dni),
+      edad:this.Edad,
+      ingresos:this.Ingresos.toString(),
+      tipo_empleo:this.Empleo,
+      monto:this.Monto.toString(),
+      cuotas:Number(this.Cuotas),
+      motivo:this.Motivo
+    }
+    console.log(solicitud);
+    this.service.CreateSolicitud(solicitud).subscribe(x=>{
+      console.log("entro al create");
+      if(x==false){
+        alert("No se pudo crear la solicitud");
+      }
+      else{
+        this.ClearInput();
+      }
+    })
+  }
+  ClearInput(){
+    this.Edad="";
+    this.Ingresos="";
+    this.Empleo="";
+    this.Monto="";
+    this.Cuotas="";
+    this.Motivo="";
+  }
 }
