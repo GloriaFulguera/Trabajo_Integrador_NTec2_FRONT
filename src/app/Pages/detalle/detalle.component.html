@@ -1,0 +1,91 @@
+<div class="container mt-5">
+  <h3>{{Titulo}}</h3>
+  <br>
+  <form>
+    <!-- Primera fila -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="Nombre" disabled="true">
+      </div>
+      <div class="col-md-4">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="Apellido" disabled="true">
+      </div>
+      <div class="col-md-4">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="number" class="form-control" id="edad" name="edad" [(ngModel)]="Edad" disabled="true">
+      </div>
+    </div>
+    <!-- Segunda fila -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="dni" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="Dni" disabled="true">
+      </div>
+      <div class="col-md-4">
+        <label for="ingresos" class="form-label">Ingresos mensuales</label>
+        <input type="number" class="form-control" id="ingresos" name="ingresos" [(ngModel)]="Ingresos" disabled="true">
+      </div>
+      <div class="col-md-4">
+        <label for="empleo" class="form-label">Tipo de empleo</label>
+        <select class="form-select" id="empleo" name="empleo" [(ngModel)]="Empleo" disabled="true">
+          <option value="">Seleccionar...</option>
+          <option value="publico">Empleado público</option>
+          <option value="privado">Empleado privado</option>
+          <option value="independiente">Independiente</option>
+          <option value="informal">Informal</option>
+        </select>
+      </div>
+    </div>
+<br>
+    <hr>
+<br>
+    <!-- Tercera fila -->
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="monto" class="form-label">Monto solicitado</label>
+        <input type="number" class="form-control" id="monto" name="monto" [(ngModel)]="Monto" disabled="true">
+      </div>
+      <div class="col-md-3">
+        <label for="cuotas" class="form-label">Cantidad de cuotas</label>
+        <select class="form-select" id="cuotas" name="cuotas" [(ngModel)]="Cuotas" disabled="true">
+          <option value="">Seleccionar...</option>
+          <option value="6">6</option>
+          <option value="9">9</option>
+          <option value="12">12</option>
+          <option value="24">24</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label>Riesgo</label>
+        <input type="text" class="form-control" id="Riesgo" >
+      </div>
+      <div class="col-md-3">
+        <label>Estado</label>
+        <input type="text" class="form-control" id="Estado" >
+      </div>
+    </div>
+
+    <!-- Motivo -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="motivo" class="form-label">Motivo</label>
+        <textarea rows="2" class="form-control" id="motivo" name="motivo" [(ngModel)]="Motivo" disabled="true"></textarea>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Motivo rechazo</label>
+        <textarea rows="2" class="form-control" id="motivo-rechazo" ></textarea>
+      </div>
+    </div>
+<br>
+    <!-- Botón -->
+    <div class="row">
+      <div class="col-md-4">
+        <a class="btn btn-secondary" href="home/historial">Volver</a>
+      </div>
+    </div>
+
+
+  </form>
+</div>

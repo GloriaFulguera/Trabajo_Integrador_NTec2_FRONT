@@ -9,6 +9,7 @@ import { SolicitudService } from '../../Services/solicitud.service';
 })
 export class HistorialComponent implements OnInit{
   DataSource:any;
+  
   constructor(private service:SolicitudService){}
   ngOnInit(): void {
     this.GetSolicitudes();

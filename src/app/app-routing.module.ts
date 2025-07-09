@@ -5,6 +5,7 @@ import { HistorialComponent } from './Pages/historial/historial.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ContainerComponent } from './Components/container/container.component';
 import { HomeComponent } from './Pages/home/home.component';
+import { DetalleComponent } from './Pages/detalle/detalle.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       { path: "", component: HomeComponent },
       { path: "solicitud", component: SolicitudesComponent },
-      { path: "historial", component: HistorialComponent }
+      { path: "historial", component: HistorialComponent },
+      { path: "detalle", component: DetalleComponent }
     ]
   }
 ];

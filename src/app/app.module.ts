@@ -12,6 +12,7 @@ import { SolicitudesComponent } from './Pages/solicitudes/solicitudes.component'
 import { HistorialComponent } from './Pages/historial/historial.component';
 import { LoginComponent } from './Components/login/login.component';
 import { HomeComponent } from './Pages/home/home.component';
+import { DetalleComponent } from './Pages/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './Pages/home/home.component';
     SolicitudesComponent,
     HistorialComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,

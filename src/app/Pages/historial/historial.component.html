@@ -16,8 +16,8 @@
       <td>{{x.cuotas}}</td>
       <td>{{x.estado}}</td>
       <td>
-        <button class="btn btn-primary me-2">Detalles</button>
-        <button class="btn btn-warning me-2">Editar</button>
+        <a class="btn btn-primary me-2" href="home/detalle?titulo=Detalle&id={{x.id}}" >Detalles</a>
+        <a class="btn btn-warning me-2" href="home/detalle?titulo=Editar&id={{x.id}}">Editar</a>
         <button class="btn btn-danger me-2">Eliminar</button>
       </td>
       <!-- Aca le puedo meter botones que aparezcan segun el rol -->
