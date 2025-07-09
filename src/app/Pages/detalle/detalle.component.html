@@ -38,9 +38,9 @@
         </select>
       </div>
     </div>
-<br>
+    <br>
     <hr>
-<br>
+    <br>
     <!-- Tercera fila -->
     <div class="row mb-3">
       <div class="col-md-3">
@@ -59,11 +59,21 @@
       </div>
       <div class="col-md-3">
         <label>Riesgo</label>
-        <input type="text" class="form-control" id="Riesgo" >
+        <select class="form-select" name="riesgo" [(ngModel)]="Riesgo" disabled="true">
+          <option value="bajo">BAJO</option>
+          <option value="medio">MEDIO</option>
+          <option value="alto">ALTO</option>
+        </select>
+        <!-- <input type="text" class="form-control" id="Riesgo"> -->
       </div>
       <div class="col-md-3">
         <label>Estado</label>
-        <input type="text" class="form-control" id="Estado" >
+        <select class="form-select" name="estado" [(ngModel)]="Estado" disabled="true">
+          <option value="rechazado">RECHAZADO</option>
+          <option value="pendiente">PENDIENTE</option>
+          <option value="aprobado">APROBADO</option>
+        </select>
+        <!-- <input type="text" class="form-control" id="Estado"> -->
       </div>
     </div>
 
@@ -71,14 +81,15 @@
     <div class="row mb-3">
       <div class="col-md-6">
         <label for="motivo" class="form-label">Motivo</label>
-        <textarea rows="2" class="form-control" id="motivo" name="motivo" [(ngModel)]="Motivo" disabled="true"></textarea>
+        <textarea rows="2" class="form-control" id="motivo" name="motivo" [(ngModel)]="Motivo"
+          disabled="true"></textarea>
       </div>
       <div class="col-md-6">
         <label class="form-label">Motivo rechazo</label>
-        <textarea rows="2" class="form-control" id="motivo-rechazo" ></textarea>
+        <textarea rows="2" class="form-control" id="motivo-rechazo"></textarea>
       </div>
     </div>
-<br>
+    <br>
     <!-- Botón -->
     <div class="row">
       <div class="col-md-4">

@@ -9,7 +9,7 @@ import { SolicitudService } from '../../Services/solicitud.service';
 })
 export class HistorialComponent implements OnInit{
   DataSource:any;
-  
+
   constructor(private service:SolicitudService){}
   ngOnInit(): void {
     this.GetSolicitudes();
@@ -17,6 +17,17 @@ export class HistorialComponent implements OnInit{
   GetSolicitudes(){
     return this.service.GetSolicitudes().subscribe(x=>{
       this.DataSource=x;
+    })
+  }
+  DeleteSolicitud(id:any){
+    console.log("voy a eliminar el id: "+id);
+    return this.service.DeleteSolicitud(id).subscribe(x=>{
+      if(x==false){
+        alert("No se pudo eliminar la solicitud");
+      }
+      else{
+        location.reload();
+      }
     })
   }
 }
