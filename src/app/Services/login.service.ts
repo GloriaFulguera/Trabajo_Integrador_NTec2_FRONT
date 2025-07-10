@@ -14,4 +14,7 @@ export class LoginService {
   GetUser(dni:any){
     return this.http.get(this.url+"GetUsuarios?dni="+dni);
   }
+  CreateUser(user:any){
+    return this.http.post(this.url+"CreateUsuario",user);
+  }
 }
