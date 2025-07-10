@@ -1,25 +1,24 @@
-
-<div class="bg-light d-flex align-items-center justify-content-center vh-100">
-  <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
-    <h4 class="text-center mb-4">Iniciar Sesión</h4>
-   
+<div class="vh-100 d-flex align-items-center justify-content-center" style="background-color: #f5f5f5;">
+  <div class="card shadow" style="width: 100%; max-width: 400px;">
+    <div class="card-header text-white text-center" style="background-color: #f25500;">
+      <h4 class="my-2">Iniciar Sesión</h4>
+    </div>
+    <div class="card-body">
       <div class="mb-3">
         <label class="form-label">DNI</label>
-        <input type="text" class="form-control"placeholder="Ingresa tu usuario" required [(ngModel)]="usuario">
+        <input type="text" class="form-control" placeholder="Ingresa tu DNI" required [(ngModel)]="usuario">
       </div>
       <div class="mb-3">
         <label class="form-label">Contraseña</label>
         <input type="password" class="form-control" placeholder="Ingresa tu contraseña" required [(ngModel)]="clave">
       </div>
       <div class="d-grid">
-        <button class="btn btn-primary" (click)="Login();">Entrar</button>
+        <button class="btn text-white" style="background-color: #f25500;" (click)="Login();">Entrar</button>
       </div>
-    
-    <div class="text-center mt-3">
-      <a href="#">¿Olvidaste tu contraseña?</a>
-      <br>
-      <p style="color: crimson;font-weight: bold;"> {{mensaje}}</p>  
+      <div class="text-center mt-3">
+        <a href="/registro" class="text-decoration-none">Crear una cuenta</a>
+        <p class="mt-2 fw-bold text-danger">{{mensaje}}</p>  
+      </div>
     </div>
   </div>
 </div>
-

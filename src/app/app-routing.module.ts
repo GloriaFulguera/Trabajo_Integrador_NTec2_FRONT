@@ -6,10 +6,12 @@ import { LoginComponent } from './Components/login/login.component';
 import { ContainerComponent } from './Components/container/container.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { DetalleComponent } from './Pages/detalle/detalle.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
+  { path: "registro", component: RegisterComponent },
   {
     path: "home", component: ContainerComponent,
     children: [

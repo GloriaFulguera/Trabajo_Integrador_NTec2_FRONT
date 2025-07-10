@@ -1,0 +1,37 @@
+<div class="vh-100 d-flex align-items-center justify-content-center" style="background-color: #f5f5f5;">
+  <div class="card shadow" style="width: 100%; max-width: 500px;">
+    <div class="card-header text-white text-center" style="background-color: #f25500;">
+      <h4 class="my-2">Crear cuenta</h4>
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" placeholder="Ingresa tu nombre" [(ngModel)]="Nombre" name="nombre" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" placeholder="Ingresa tu apellido" [(ngModel)]="Apellido" name="apellido" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">DNI</label>
+        <input type="text" class="form-control" placeholder="Ingresa tu DNI" [(ngModel)]="Dni" name="dni" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control" placeholder="Crea una contraseña" [(ngModel)]="Clave" name="clave" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Repetir contraseña</label>
+        <input type="password" class="form-control" placeholder="Crea una contraseña" [(ngModel)]="RClave" name="r-clave" required>
+      </div>
+      <br><br>
+      <div class="d-grid">
+        <button class="btn text-white" style="background-color: #f25500;" (click)="Registrar();">Registrarme</button>
+      </div>
+      <div class="text-center mt-3">
+        <a href="/login" class="text-decoration-none">¿Ya tenés cuenta? Iniciar sesión</a>
+        <!-- <p class="mt-2 fw-bold text-danger">{{mensaje}}</p> -->
+      </div>
+    </div>
+  </div>
+</div>
