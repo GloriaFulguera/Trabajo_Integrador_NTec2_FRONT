@@ -86,14 +86,20 @@
       </div>
       <div class="col-md-6">
         <label class="form-label">Motivo rechazo</label>
-        <textarea rows="2" class="form-control" id="motivo-rechazo"></textarea>
+        <textarea rows="2" class="form-control" id="motivo-rechazo" [disabled]="Titulo=='Detalle'"></textarea>
       </div>
     </div>
     <br>
     <!-- Botón -->
     <div class="row">
-      <div class="col-md-4">
-        <a class="btn btn-secondary" href="home/historial">Volver</a>
+      <div class="col-md-6">
+        <a class="btn btn-secondary" href="home/historial">	<i class="fas fa-arrow-left"></i> Volver</a>
+      </div>
+      <div class="col-md-2">
+        <button *ngIf="Titulo=='Editar'" class="btn btn-md btn-success">Aprobar</button>
+      </div>
+      <div class="col-md-2">
+        <button *ngIf="Titulo=='Editar'" class="btn btn-md btn-danger">Rechazar</button>
       </div>
     </div>
 
