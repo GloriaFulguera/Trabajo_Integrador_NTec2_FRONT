@@ -15,6 +15,7 @@ import { HomeComponent } from './Pages/home/home.component';
 import { DetalleComponent } from './Pages/detalle/detalle.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { LockComponent } from './Components/lock/lock.component';
+import { UsuariosComponent } from './Pages/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LockComponent } from './Components/lock/lock.component';
     HomeComponent,
     DetalleComponent,
     RegisterComponent,
-    LockComponent
+    LockComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { HomeComponent } from './Pages/home/home.component';
 import { DetalleComponent } from './Pages/detalle/detalle.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { LockComponent } from './Components/lock/lock.component';
+import { UsuariosComponent } from './Pages/usuarios/usuarios.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: "", component: HomeComponent },
       { path: "solicitud", component: SolicitudesComponent },
       { path: "historial", component: HistorialComponent },
-      { path: "detalle", component: DetalleComponent }
+      { path: "detalle", component: DetalleComponent },
+      { path: "usuarios", component: UsuariosComponent }
     ]
   }
 ];

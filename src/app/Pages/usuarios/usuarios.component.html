@@ -1,0 +1,37 @@
+
+<div class="container mt-5" style="max-width: 1080px;">
+  <h3>Usuarios</h3>
+  <br>
+  <table class="table table-bordered table-sm align-middle text-center">
+  <thead>
+    <tr>
+      <th scope="col">DNI</th>
+      <th scope="col">Nombre y Apellido</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Fecha de alta</th>
+      <th scope="col">Acciones</th>
+      <th scope="col">Gestión</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of DataSource">
+      <th scope="row">{{x.dni}}</th>
+      <td>{{x.nombre}} {{x.apellido}}</td>
+      <td>{{x.estado=='I'?'INACTIVO':'ACTIVO'}}</td>
+      <td>{{x.rol=='1'?'Normal':'Admin'}}</td>
+      <td>{{x.fecha_alta}}</td>
+      <td>
+        <button class="btn btn-warning me-2" title="Editar"><i class="fa-solid fa-user-pen"></i></button>
+        <button class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+      </td>
+      <td>
+        <button *ngIf="x.estado=='I'" class="btn btn-success me-2" (click)="CambiarEstado(x.dni)" style="width: 90px;">Activar</button>
+        <button *ngIf="x.estado=='A'" class="btn btn-danger me-2" (click)="CambiarEstado(x.dni)" style="width: 90px;">Inactivar</button>
+        <button class="btn btn-dark" (click)="CambiarRol(x.dni)" style="white-space: nowrap; width: 130px;">{{x.rol=='1'?'Volver Admin':'Volver Normal'}}</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
