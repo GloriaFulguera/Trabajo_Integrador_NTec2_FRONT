@@ -22,8 +22,8 @@
       <td>{{x.rol=='1'?'Normal':'Admin'}}</td>
       <td>{{x.fecha_alta}}</td>
       <td>
-        <button class="btn btn-warning me-2" title="Editar"><i class="fa-solid fa-user-pen"></i></button>
-        <button class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+        <button class="btn btn-warning me-2" title="Editar" data-bs-toggle="modal" data-bs-target="#modal-editar" (click)="SeleccionarUsuario(x.dni)"><i class="fa-solid fa-user-pen"></i></button>
+        <button class="btn btn-danger" title="Eliminar" data-bs-toggle="modal" data-bs-target="#modal-eliminar" (click)="SeleccionarUsuario(x.dni)"><i class="fa-solid fa-trash-can"></i></button>
       </td>
       <td>
         <button *ngIf="x.estado=='I'" class="btn btn-success me-2" (click)="CambiarEstado(x.dni)" style="width: 90px;">Activar</button>
@@ -34,4 +34,52 @@
 
   </tbody>
 </table>
+</div>
+
+<!-- Modal Editar-->
+<div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="exampleModalEditar" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalEditar">Editar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="Nombre" name="nombre">
+          </div>
+
+          <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" [(ngModel)]="Apellido" name="apellido">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-warning" (click)="EditarUsuario()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Eliminar-->
+<div class="modal fade" id="modal-eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que quiere eliminar el usuario?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="EliminarUsuario()">Eliminar</button>
+      </div>
+    </div>
+  </div>
 </div>

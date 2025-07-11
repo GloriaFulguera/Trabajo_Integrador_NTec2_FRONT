@@ -20,7 +20,7 @@ export class UsuariosComponent implements OnInit {
 
   constructor(private service: UsuarioService, private routeL: Router, private loginService: LoginService) { }
   ngOnInit(): void {
-    if (localStorage.getItem("user_state") === "true") {
+    if (localStorage.getItem("user_state") === "true" && localStorage.getItem("rol")==="admin") {
       this.Dni = localStorage.getItem("user_dni");
       this.GetUsuarios();
     }
@@ -59,15 +59,16 @@ export class UsuariosComponent implements OnInit {
 
     })
   }
-  /*GetUsuario(userDni:any){
+  SeleccionarUsuario(userDni:any){
     return this.loginService.GetUser(userDni).subscribe(x=>{
       this.Usuario=x;
+      this.Dni=this.Usuario[0].dni;
       this.Nombre=this.Usuario[0].nombre;
       this.Apellido=this.Usuario[0].apellido;
       this.Rol=this.Usuario[0].rol;
       this.Estado=this.Usuario[0].estado;
     })
-  }*/
+  }
 
   CambiarEstado(userDni: any) {
     let obj;
@@ -83,13 +84,42 @@ export class UsuariosComponent implements OnInit {
       }
       this.service.EditUsuario(obj).subscribe(x => {
         if (x == false) {
-          alert("No se pudo cambiar el estado del usuario seleccionado.")
+          alert("No se pudo cambiar el estado del usuario seleccionado.");
         }
         else {
           location.reload();
         }
       })
 
+    })
+  }
+
+  EditarUsuario(){
+    let obj={
+      dni:this.Dni,
+      nombre:this.Nombre,
+      apellido:this.Apellido,
+      rol:this.Rol,
+      estado:this.Estado
+    }
+    this.service.EditUsuario(obj).subscribe(x=>{
+      if(x==false){
+        alert("No se pudo actualizar el usuario seleccionado.")
+      }
+      else{
+        location.reload();
+      }
+    })
+  }
+
+  EliminarUsuario(){
+    this.service.DeleteUsuario(this.Dni).subscribe(x=>{
+      if(x==false){
+        alert("No se pudo eliminar el usuario seleccionado.");
+      }
+      else{
+        location.reload();
+      }
     })
   }
 }
