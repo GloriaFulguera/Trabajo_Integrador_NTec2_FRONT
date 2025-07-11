@@ -19,8 +19,8 @@
       <td>{{x.cuotas}}</td>
       <td>{{x.estado|uppercase}}</td>
       <td>
-        <a *ngIf="x.estado=='aprobado'||x.estado=='rechazado'" class="btn btn-primary me-2 btn-fixed" href="home/detalle?titulo=Detalle&id={{x.id}}" title="Ver detalles"><i class="fas fa-eye"></i></a>
-        <a *ngIf="x.estado=='pendiente'" class="btn btn-warning me-2 btn-fixed" href="home/detalle?titulo=Editar&id={{x.id}}" title="Editar"><i class="fas fa-edit"></i></a>
+        <a *ngIf="x.estado=='aprobado'||x.estado=='rechazado'" class="btn btn-info me-2 btn-fixed" href="home/detalle?titulo=Detalle&id={{x.id}}" title="Ver detalles"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a *ngIf="x.estado=='pendiente'" class="btn btn-primary me-2 btn-fixed" href="home/detalle?titulo=Editar&id={{x.id}}" title="Editar"><i class="fas fa-eye"></i></a>
         <button class="btn btn-danger me-2 btn-fixed" (click)="DeleteSolicitud(x.id)" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
       </td>
       <!-- Aca le puedo meter botones que aparezcan segun el rol -->

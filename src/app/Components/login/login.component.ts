@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit{
       if(this.DataSource.result==true){
         localStorage.setItem("user_state","true");
         localStorage.setItem("user_dni",this.usuario);
+        localStorage.setItem("rol",this.DataSource.rol);
         this.router.navigate(['home/']);
       }
       else{
