@@ -17,4 +17,7 @@ export class SolicitudService {
   GetSolicitud(id:any){
     return this.http.get(this.url+"GetSolicitudes?id="+id);
   }
+  EditSolicitud(obj:any){
+    return this.http.put(this.url+"EditSolicitud",obj);
+  }
 }

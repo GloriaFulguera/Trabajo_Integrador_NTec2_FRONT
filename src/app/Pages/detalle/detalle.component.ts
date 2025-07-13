@@ -21,13 +21,14 @@ export class DetalleComponent implements OnInit {
   Monto: any;
   Cuotas: any;
   Motivo: any;
+  MotivoR: any;
   Riesgo: any;
   Estado: any;
 
   Usuario: any;
   DataSource: any;
 
-  constructor(private service: SolicitudService, private route: ActivatedRoute, private loginService: LoginService,private routeL:Router) { }
+  constructor(private service: SolicitudService, private route: ActivatedRoute, private loginService: LoginService, private routeL: Router) { }
 
   ngOnInit(): void {
     if (localStorage.getItem("user_state") === "true") {
@@ -35,7 +36,7 @@ export class DetalleComponent implements OnInit {
       this.GetUser();
       this.GetSolicitud();
     }
-    else{
+    else {
       this.routeL.navigate(['/lock']);
     }
 
@@ -65,6 +66,40 @@ export class DetalleComponent implements OnInit {
       this.Motivo = this.DataSource[0].motivo;
       this.Riesgo = this.DataSource[0].riesgo;
       this.Estado = this.DataSource[0].estado;
+      this.MotivoR = this.DataSource[0].motivo_rechazo_aprobacion;
+    })
+  }
+  Aprobar() {
+    let obj = {
+      id: Number(this.Id),
+      estado: "aprobado",
+      motivo_rechazo: this.MotivoR
+    }
+    this.service.EditSolicitud(obj).subscribe(x => {
+      if (x == false) {
+        alert("Ocurrio un error.");
+      }
+      else {
+        alert("La solicitud se modifico correctamente.");
+        this.routeL.navigate(['home/historial']);
+      }
+    })
+  }
+  Rechazar() {
+    let obj = {
+      id: Number(this.Id),
+      estado: "rechazado",
+      motivo_rechazo: this.MotivoR.toString()
+    }
+    console.log(obj);
+    this.service.EditSolicitud(obj).subscribe(x => {
+      if (x == false) {
+        alert("Ocurrio un error.");
+      }
+      else {
+        alert("La solicitud se modifico correctamente.");
+        this.routeL.navigate(['home/historial']);
+      }
     })
   }
 }

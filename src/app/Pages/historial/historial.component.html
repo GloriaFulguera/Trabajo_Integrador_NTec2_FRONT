@@ -1,9 +1,21 @@
 <div class="container mt-5" style="max-width: 1080px;">
+
+
   <div class="card shadow-soft rounded-soft">
     <div class="card-header bg-primary text-white">
       <h5 class="mb-1">Solicitudes</h5>
     </div>
     <div class="card-body p-2">
+      <div class="d-flex align-items-center mb-4">
+        <label for="filtro-estado" class="me-2 mb-0" style="font-weight: bold;">Filtrar por estado:</label>
+        <select id="filtro-estado" class="form-select w-auto shadow-soft" name="filterEstado">
+          <option value="">Todos</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="aprobado">Aprobado</option>
+          <option value="rechazado">Rechazado</option>
+        </select>
+      </div>
+
       <div class="table-responsive">
         <table class="table table-striped table-hover table-sm align-middle text-center mb-0">
           <thead class="bg-primary text-white">
