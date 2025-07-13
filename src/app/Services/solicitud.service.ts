@@ -17,7 +17,4 @@ export class SolicitudService {
   GetSolicitud(id:any){
     return this.http.get(this.url+"GetSolicitudes?id="+id);
   }
-  DeleteSolicitud(id:any){
-    return this.http.delete(this.url+"DeleteSolicitud?id="+id)
-  }
 }

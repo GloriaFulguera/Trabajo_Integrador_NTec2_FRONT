@@ -26,15 +26,4 @@ export class HistorialComponent implements OnInit {
       this.DataSource = x;
     })
   }
-  DeleteSolicitud(id: any) {
-    console.log("voy a eliminar el id: " + id);
-    return this.service.DeleteSolicitud(id).subscribe(x => {
-      if (x == false) {
-        alert("No se pudo eliminar la solicitud");
-      }
-      else {
-        location.reload();
-      }
-    })
-  }
 }
