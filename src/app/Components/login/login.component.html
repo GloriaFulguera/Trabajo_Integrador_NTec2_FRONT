@@ -1,23 +1,29 @@
-<div class="vh-100 d-flex align-items-center justify-content-center" style="background-color: #f5f5f5;">
-  <div class="card shadow" style="width: 100%; max-width: 400px;">
-    <div class="card-header text-white text-center" style="background-color: #f25500;">
+<div class="vh-100 d-flex align-items-center justify-content-center bg-body">
+  <div class="card shadow-soft rounded-soft bg-dark text-white" style="max-width: 400px; width: 100%;">
+    <div class="card-header bg-primary text-center rounded-top-soft">
       <h4 class="my-2">Iniciar Sesión</h4>
     </div>
-    <div class="card-body">
+    <div class="card-body p-4">
       <div class="mb-3">
-        <label class="form-label">DNI</label>
-        <input type="text" class="form-control" placeholder="Ingresa tu DNI" required [(ngModel)]="usuario">
+        <label for="dni" class="form-label">DNI</label>
+        <input id="dni" type="text" class="form-control bg-secondary text-white border-0" placeholder="Ingresa tu DNI"
+          required [(ngModel)]="usuario">
       </div>
       <div class="mb-3">
-        <label class="form-label">Contraseña</label>
-        <input type="password" class="form-control" placeholder="Ingresa tu contraseña" required [(ngModel)]="clave">
+        <label for="clave" class="form-label">Contraseña</label>
+        <input id="clave" type="password" class="form-control bg-secondary text-white border-0"
+          placeholder="Ingresa tu contraseña" required [(ngModel)]="clave">
       </div>
       <div class="d-grid">
-        <button class="btn text-white" style="background-color: #f25500;" (click)="Login();">Entrar</button>
+        <button class="btn btn-primary" (click)="Login();">
+          Entrar
+        </button>
       </div>
       <div class="text-center mt-3">
-        <a href="/registro" class="text-decoration-none">Crear una cuenta</a>
-        <p class="mt-2 fw-bold text-danger">{{mensaje}}</p>  
+        <p class="mt-2 fw-bold text-danger">{{ mensaje }}</p>
+        <a href="/registro" class="btn btn-outline-light btn-sm">
+          Crear una cuenta
+        </a>
       </div>
     </div>
   </div>

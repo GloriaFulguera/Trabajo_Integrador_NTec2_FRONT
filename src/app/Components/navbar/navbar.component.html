@@ -13,16 +13,16 @@
           <a class="nav-link active" aria-current="page" href=""></a>
         </li>
         <li class="nav-item mx-3">
-          <a class="nav-link" href="home/">Home</a>
+          <a class="nav-link" href="home/"><i class="bi bi-house-door-fill"></i> Home</a>
         </li>
         <li class="nav-item mx-3">
-          <a class="nav-link" href="home/historial">{{Rol=='admin'? 'Ver Solicitudes':'Mis Solicitudes'}}</a>
+          <a class="nav-link" href="home/historial"><i class="bi bi-file-earmark-fill"></i> {{Rol=='admin'? 'Ver Solicitudes':'Mis Solicitudes'}}</a>
         </li>
         <li class="nav-item mx-3">
-          <a class="nav-link" href="home/solicitud">Nueva Solicitud</a>
+          <a class="nav-link" href="home/solicitud"><i class="bi bi-file-earmark-plus"></i> Nueva Solicitud</a>
         </li>
         <li class="nav-item mx-3">
-          <a *ngIf="Rol=='admin'" class="nav-link" href="home/usuarios">Administrar Usuarios</a>
+          <a *ngIf="Rol=='admin'" class="nav-link" href="home/usuarios"><i class="bi bi-person-gear"></i> Administrar Usuarios</a>
         </li>
       </ul>
 

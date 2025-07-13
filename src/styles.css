@@ -1,1 +1,168 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles & Theme Variables */
+
+:root {
+  /* Primary brand color (orange) */
+  --bs-primary:      #f25500;
+  --bs-primary-rgb:  242, 85, 0;
+
+  /* Secondary neutral color */
+  --bs-secondary:    #6c757d;
+
+  /* Semantic colors */
+  --bs-success:      #28a745;
+  --bs-info:         #17a2b8;
+  --bs-warning:      #ffc107;
+  --bs-danger:       #dc3545;
+
+  /* Light/dark extremes */
+  --bs-white:        #ffffff;
+  --bs-black:        #0f0f0f;
+
+  /* Body background and text */
+  --bs-body-bg:      #f5f5f5;
+  --bs-body-color:   #212529;
+}
+
+/* Dark mode overrides: add `dark-mode` class on <body> */
+body.dark-mode {
+  --bs-body-bg:      #121212;
+  --bs-body-color:   #e0e0e0;
+  --bs-primary:      #ff8c42; /* slightly brighter for dark bg */
+  --bs-secondary:    #adb5bd;
+  --bs-success:      #198754;
+  --bs-info:         #0dcaf0;
+  --bs-warning:      #ffc107;
+  --bs-danger:       #dc3545;
+  --bs-white:        #212529;
+  --bs-black:        #f5f5f5;
+}
+
+/* Global element styles */
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+/* ----- Button Overrides ----- */
+.btn-primary {
+  background-color: var(--bs-primary) !important;
+  border-color:     var(--bs-primary) !important;
+  color:            var(--bs-white)    !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  filter: brightness(0.9);
+}
+
+.btn-secondary {
+  background-color: var(--bs-secondary) !important;
+  border-color:     var(--bs-secondary) !important;
+  color:            var(--bs-white)     !important;
+}
+.btn-success {
+  background-color: var(--bs-success) !important;
+  border-color:     var(--bs-success) !important;
+  color:            var(--bs-white)   !important;
+}
+.btn-info {
+  background-color: var(--bs-info) !important;
+  border-color:     var(--bs-info) !important;
+  color:            var(--bs-white) !important;
+}
+.btn-warning {
+  background-color: var(--bs-warning) !important;
+  border-color:     var(--bs-warning) !important;
+  color:            var(--bs-black)   !important;
+}
+.btn-danger {
+  background-color: var(--bs-danger) !important;
+  border-color:     var(--bs-danger) !important;
+  color:            var(--bs-white)  !important;
+}
+
+/* Outline Buttons */
+.btn-outline-primary {
+  color:        var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--bs-primary) !important;
+  color:            var(--bs-white)   !important;
+}
+.btn-outline-secondary {
+  color:        var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
+}
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background-color: var(--bs-secondary) !important;
+  color:            var(--bs-white)    !important;
+}
+/* Repeat outline overrides for success, info, warning, danger if needed */
+
+/* ----- Background Utilities ----- */
+.bg-primary     { background-color: var(--bs-primary)   !important; }
+.bg-secondary   { background-color: var(--bs-secondary) !important; }
+.bg-success     { background-color: var(--bs-success)   !important; }
+.bg-info        { background-color: var(--bs-info)      !important; }
+.bg-warning     { background-color: var(--bs-warning)   !important; }
+.bg-danger      { background-color: var(--bs-danger)    !important; }
+.bg-body         { background-color: var(--bs-body-bg)   !important; }
+
+/* ----- Text Utilities ----- */
+.text-primary   { color: var(--bs-primary)    !important; }
+.text-secondary { color: var(--bs-secondary)  !important; }
+.text-success   { color: var(--bs-success)    !important; }
+.text-info      { color: var(--bs-info)       !important; }
+.text-warning   { color: var(--bs-warning)    !important; }
+.text-danger    { color: var(--bs-danger)     !important; }
+.text-body      { color: var(--bs-body-color) !important; }
+
+/* ----- Form & Card ----- */
+.form-control,
+.form-select,
+.form-check-input {
+  border-radius: 0.5rem;
+}
+.card {
+  border-radius: 1rem;
+}
+
+/* ----- Tables ----- */
+.table-responsive { margin-bottom: 1.5rem; }
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(var(--bs-primary-rgb), 0.05);
+}
+.table-hover > tbody > tr:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+/* ----- Modals ----- */
+.modal-header {
+  border-bottom: 2px solid var(--bs-primary);
+}
+
+/* ----- Utility Helpers ----- */
+.shadow-soft {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+.rounded-soft {
+  border-radius: 1rem !important;
+}
+
+/* ----- Hover darkening for all button variants ----- */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-success:hover,
+.btn-success:focus,
+.btn-info:hover,
+.btn-info:focus,
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-danger:hover,
+.btn-danger:focus {
+  filter: brightness(0.9) !important;
+}
