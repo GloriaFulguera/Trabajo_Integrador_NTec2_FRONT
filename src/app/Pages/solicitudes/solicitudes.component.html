@@ -19,7 +19,7 @@
               disabled>
           </div>
           <div class="col-md-4">
-            <label for="edad" class="form-label">Edad</label>
+            <label for="edad" class="form-label required">Edad</label>
             <input id="edad" type="number" class="form-control shadow-soft" [(ngModel)]="Edad" name="edad">
           </div>
         </div>
@@ -31,11 +31,11 @@
             <input id="dni" type="text" class="form-control shadow-soft" [(ngModel)]="Dni" name="dni" disabled>
           </div>
           <div class="col-md-4">
-            <label for="ingresos" class="form-label">Ingresos mensuales</label>
+            <label for="ingresos" class="form-label required">Ingresos mensuales</label>
             <input id="ingresos" type="number" class="form-control shadow-soft" [(ngModel)]="Ingresos" name="ingresos">
           </div>
           <div class="col-md-4">
-            <label for="empleo" class="form-label">Tipo de empleo</label>
+            <label for="empleo" class="form-label required">Tipo de empleo</label>
             <select id="empleo" class="form-select shadow-soft" [(ngModel)]="Empleo" name="empleo">
               <option value="">Seleccionar...</option>
               <option value="publico">Empleado público</option>
@@ -51,11 +51,11 @@
         <!-- Monto y cuotas -->
         <div class="row g-3">
           <div class="col-md-4">
-            <label for="monto" class="form-label">Monto solicitado</label>
+            <label for="monto" class="form-label required">Monto solicitado</label>
             <input id="monto" type="number" class="form-control shadow-soft" [(ngModel)]="Monto" name="monto">
           </div>
           <div class="col-md-4">
-            <label for="cuotas" class="form-label">Cantidad de cuotas</label>
+            <label for="cuotas" class="form-label required">Cantidad de cuotas</label>
             <select id="cuotas" class="form-select shadow-soft" [(ngModel)]="Cuotas" name="cuotas">
               <option value="">Seleccionar...</option>
               <option value="6">6</option>
@@ -69,16 +69,20 @@
         <!-- Motivo -->
         <div class="row mt-3">
           <div class="col-md-8">
-            <label for="motivo" class="form-label">Motivo</label>
+            <label for="motivo" class="form-label required">Motivo</label>
             <textarea id="motivo" rows="2" class="form-control shadow-soft" [(ngModel)]="Motivo"
               name="motivo"></textarea>
           </div>
+        </div><br>
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          <i class="bi bi-exclamation-triangle"></i> {{ errorMessage }}
         </div>
 
         <!-- Botón Guardar -->
         <div class="d-grid mt-4">
           <button class="btn btn-success" (click)="CreateSolicitud()">
-            <i class="fa-solid fa-floppy-disk"></i> Guardar 
+            <i class="fa-solid fa-floppy-disk"></i> Guardar
           </button>
         </div>
       </form>

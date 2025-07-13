@@ -20,6 +20,8 @@ export class SolicitudesComponent implements OnInit {
   Cuotas: any;
   Motivo: any;
   DataSource: any;
+  errorMessage: string = '';
+
   constructor(private service: SolicitudService, private loginService: LoginService, private routeL: Router) { }
 
   ngOnInit(): void {
@@ -41,6 +43,14 @@ export class SolicitudesComponent implements OnInit {
     })
   }
   CreateSolicitud() {
+
+    if (!this.Edad || !this.Ingresos || !this.Empleo ||
+        !this.Monto || !this.Cuotas || !this.Motivo) {
+      this.errorMessage = 'Por favor completa todos los campos marcados con (*).';
+      return;
+    }
+    this.errorMessage = '';
+
     let solicitud = {
       dni: Number(this.Dni),
       edad: this.Edad,

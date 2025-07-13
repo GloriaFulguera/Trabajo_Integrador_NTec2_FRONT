@@ -24,6 +24,7 @@ export class DetalleComponent implements OnInit {
   MotivoR: any;
   Riesgo: any;
   Estado: any;
+  errorMessage: string = '';
 
   Usuario: any;
   DataSource: any;
@@ -69,29 +70,19 @@ export class DetalleComponent implements OnInit {
       this.MotivoR = this.DataSource[0].motivo_rechazo_aprobacion;
     })
   }
-  Aprobar() {
+
+  CambiarEstado(nuevoEstado:any){
+    if (!this.MotivoR) {
+      this.errorMessage = 'Por favor completá el campo Motivo de aprobacion / rechazo.';
+      return;
+    }
+    this.errorMessage = '';
+
     let obj = {
       id: Number(this.Id),
-      estado: "aprobado",
+      estado: nuevoEstado,
       motivo_rechazo: this.MotivoR
     }
-    this.service.EditSolicitud(obj).subscribe(x => {
-      if (x == false) {
-        alert("Ocurrio un error.");
-      }
-      else {
-        alert("La solicitud se modifico correctamente.");
-        this.routeL.navigate(['home/historial']);
-      }
-    })
-  }
-  Rechazar() {
-    let obj = {
-      id: Number(this.Id),
-      estado: "rechazado",
-      motivo_rechazo: this.MotivoR.toString()
-    }
-    console.log(obj);
     this.service.EditSolicitud(obj).subscribe(x => {
       if (x == false) {
         alert("Ocurrio un error.");
