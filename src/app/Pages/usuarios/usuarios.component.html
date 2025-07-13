@@ -1,81 +1,125 @@
-
 <div class="container mt-5" style="max-width: 1080px;">
-  <h3>Usuarios</h3>
-  <br>
-  <table class="table table-bordered table-sm align-middle text-center">
-  <thead>
-    <tr>
-      <th scope="col">DNI</th>
-      <th scope="col">Nombre y Apellido</th>
-      <th scope="col">Estado</th>
-      <th scope="col">Rol</th>
-      <th scope="col">Fecha de alta</th>
-      <th scope="col">Acciones</th>
-      <th scope="col">Gestión</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let x of DataSource">
-      <th scope="row">{{x.dni}}</th>
-      <td>{{x.nombre}} {{x.apellido}}</td>
-      <td>{{x.estado=='I'?'INACTIVO':'ACTIVO'}}</td>
-      <td>{{x.rol=='1'?'Normal':'Admin'}}</td>
-      <td>{{x.fecha_alta}}</td>
-      <td>
-        <button class="btn btn-warning me-2" title="Editar" data-bs-toggle="modal" data-bs-target="#modal-editar" (click)="SeleccionarUsuario(x.dni)"><i class="fa-solid fa-user-pen"></i></button>
-        <button class="btn btn-danger" title="Eliminar" data-bs-toggle="modal" data-bs-target="#modal-eliminar" (click)="SeleccionarUsuario(x.dni)"><i class="fa-solid fa-trash-can"></i></button>
-      </td>
-      <td>
-        <button *ngIf="x.estado=='I'" class="btn btn-success me-2" (click)="CambiarEstado(x.dni)" style="width: 90px;">Activar</button>
-        <button *ngIf="x.estado=='A'" class="btn btn-danger me-2" (click)="CambiarEstado(x.dni)" style="width: 90px;">Inactivar</button>
-        <button class="btn btn-dark" (click)="CambiarRol(x.dni)" style="white-space: nowrap; width: 130px;">{{x.rol=='1'?'Volver Admin':'Volver Normal'}}</button>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
-</div>
-
-<!-- Modal Editar-->
-<div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="exampleModalEditar" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalEditar">Editar</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" [(ngModel)]="Nombre" name="nombre">
-          </div>
-
-          <div class="mb-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="apellido" [(ngModel)]="Apellido" name="apellido">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-warning" (click)="EditarUsuario()">Guardar cambios</button>
+  <div class="card shadow-soft rounded-soft">
+    <!-- Header -->
+    <div class="card-header bg-primary text-white">
+      <h5 class="my-1">Usuarios</h5>
+    </div>
+    <div class="card-body p-2">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm align-middle mb-0 text-center">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th> DNI </th>
+              <th> Nombre y Apellido </th>
+              <th> Estado </th>
+              <th> Rol </th>
+              <th> Fecha de alta </th>
+              <th> Acciones </th>
+              <th> Gestión </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of DataSource">
+              <td>{{ x.dni }}</td>
+              <td>{{ x.nombre }} {{ x.apellido }}</td>
+              <td>
+                <span class="badge" [ngClass]="{
+                    'bg-success': x.estado === 'A',
+                    'bg-secondary': x.estado === 'I'
+                  }">
+                  {{ x.estado === 'A' ? 'ACTIVO' : 'INACTIVO' }}
+                </span>
+              </td>
+              <td>
+                <span class="badge" [ngClass]="{
+                    'bg-warning text-dark': x.rol === '1',
+                    'bg-info': x.rol !== '1'
+                  }">
+                  {{ x.rol === '1' ? 'Normal' : 'Admin' }}
+                </span>
+              </td>
+              <td>{{ x.fecha_alta }}</td>
+              <td>
+                <button class="btn btn-warning btn-sm me-1" title="Editar" data-bs-toggle="modal"
+                  data-bs-target="#modal-editar" (click)="SeleccionarUsuario(x.dni)">
+                  <i class="fa-solid fa-user-pen"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" title="Eliminar" data-bs-toggle="modal"
+                  data-bs-target="#modal-eliminar" (click)="SeleccionarUsuario(x.dni)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </td>
+              <td>
+                <button *ngIf="x.estado === 'I'" class="btn btn-outline-success btn-sm me-1" style=" width: 80px;"
+                  (click)="CambiarEstado(x.dni)">
+                  Activar
+                </button>
+                <button *ngIf="x.estado === 'A'" class="btn btn-outline-secondary btn-sm me-1" style=" width: 80px;"
+                  (click)="CambiarEstado(x.dni)">
+                  Inactivar
+                </button>
+                <button class="btn btn-outline-dark btn-sm" style="white-space: nowrap; width: 110px;" (click)="CambiarRol(x.dni)">
+                  {{ x.rol === '1' ? 'Hacer Admin' : 'Hacer Normal' }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal Eliminar-->
-<div class="modal fade" id="modal-eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea eliminar el usuario?</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Modal Editar -->
+<div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-soft shadow-soft">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="modalEditarLabel">Editar Usuario</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input id="nombre" type="text" class="form-control shadow-soft" [(ngModel)]="Nombre" name="nombre" />
+        </div>
+        <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input id="apellido" type="text" class="form-control shadow-soft" [(ngModel)]="Apellido" name="apellido" />
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger" (click)="EliminarUsuario()">Eliminar</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-warning" (click)="EditarUsuario()">
+          Guardar cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="modal-eliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-soft shadow-soft">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="modalEliminarLabel">
+          Confirmar eliminación
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro que querés eliminar este usuario?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-danger" (click)="EliminarUsuario()">
+          Eliminar
+        </button>
       </div>
     </div>
   </div>

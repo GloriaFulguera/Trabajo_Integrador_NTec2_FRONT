@@ -1,30 +1,48 @@
-
 <div class="container mt-5" style="max-width: 1080px;">
-  <h3>Solicitudes</h3>
-  <br>
-  <table class="table table-bordered table-sm align-middle text-center">
-  <thead>
-    <tr>
-      <th scope="col">Fecha</th>
-      <th scope="col">Monto</th>
-      <th scope="col">Cuotas</th>
-      <th scope="col">Estado</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let x of DataSource">
-      <th scope="row">{{x.fecha_alta}}</th>
-      <td>{{x.monto}}</td>
-      <td>{{x.cuotas}}</td>
-      <td>{{x.estado|uppercase}}</td>
-      <td>
-        <a *ngIf="x.estado=='aprobado'||x.estado=='rechazado'" class="btn btn-info me-2 btn-fixed" href="home/detalle?titulo=Detalle&id={{x.id}}" title="Ver detalles"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a *ngIf="x.estado=='pendiente'" class="btn btn-primary me-2 btn-fixed" href="home/detalle?titulo=Editar&id={{x.id}}" title="Editar"><i class="fas fa-eye"></i></a>
-      </td>
-      <!-- Aca le puedo meter botones que aparezcan segun el rol -->
-    </tr>
-
-  </tbody>
-</table>
+  <div class="card shadow-soft rounded-soft">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-1">Solicitudes</h5>
+    </div>
+    <div class="card-body p-2">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-sm align-middle text-center mb-0">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Cuotas</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of DataSource">
+              <td>{{ x.fecha_alta }}</td>
+              <td>{{ x.monto | currency:'ARS ':'symbol' }}</td>
+              <td>{{ x.cuotas }}</td>
+              <td>
+                <span class="badge" [ngClass]="{
+                    'bg-warning text-dark': x.estado=='pendiente',
+                    'bg-success':      x.estado=='aprobado',
+                    'bg-danger':       x.estado=='rechazado'
+                  }">
+                  {{ x.estado | uppercase }}
+                </span>
+              </td>
+              <td>
+                <a *ngIf="x.estado!=='pendiente'" class="btn btn-outline-info btn-sm me-1"
+                  [href]="'home/detalle?titulo=Detalle&id='+x.id" title="Ver detalles">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+                <a *ngIf="x.estado=='pendiente'" class="btn btn-outline-primary btn-sm me-1"
+                  [href]="'home/detalle?titulo=Editar&id='+x.id" title="Editar">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
