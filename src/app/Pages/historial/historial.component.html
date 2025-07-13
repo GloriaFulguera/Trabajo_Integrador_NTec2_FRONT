@@ -8,7 +8,7 @@
     <div class="card-body p-2">
       <div class="d-flex align-items-center mb-4">
         <label for="filtro-estado" class="me-2 mb-0" style="font-weight: bold;">Filtrar por estado:</label>
-        <select id="filtro-estado" class="form-select w-auto shadow-soft" name="filterEstado">
+        <select id="filtro-estado" class="form-select w-auto shadow-soft" name="filterEstado" [(ngModel)]="Estado" (change)="GetSolicitudesByEstado()">
           <option value="">Todos</option>
           <option value="pendiente">Pendiente</option>
           <option value="aprobado">Aprobado</option>
@@ -46,7 +46,7 @@
                   [href]="'home/detalle?titulo=Detalle&id='+x.id" title="Ver detalles">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
-                <a *ngIf="x.estado=='pendiente'" class="btn btn-outline-primary btn-sm me-1"
+                <a *ngIf="x.estado=='pendiente' && esAdmin" class="btn btn-outline-primary btn-sm me-1"
                   [href]="'home/detalle?titulo=Editar&id='+x.id" title="Editar">
                   <i class="fas fa-edit"></i>
                 </a>

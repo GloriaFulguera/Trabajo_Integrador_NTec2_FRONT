@@ -12,7 +12,7 @@ import { SolicitudService } from '../../Services/solicitud.service';
 export class DetalleComponent implements OnInit {
   Titulo: any;
   Id: any;
-  Dni = localStorage.getItem("user_dni");
+  Dni:any;
   Nombre: any;
   Apellido: any;
   Edad: any;
@@ -34,7 +34,7 @@ export class DetalleComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem("user_state") === "true") {
       this.Cargar();
-      this.GetUser();
+      //this.GetUser();
       this.GetSolicitud();
     }
     else {
@@ -48,13 +48,7 @@ export class DetalleComponent implements OnInit {
       this.Id = x['id'];
     })
   }
-  GetUser() {
-    this.loginService.GetUser(this.Dni).subscribe(x => {
-      this.Usuario = x;
-      this.Nombre = this.Usuario[0].nombre;
-      this.Apellido = this.Usuario[0].apellido;
-    })
-  }
+
   GetSolicitud() {
     this.service.GetSolicitud(this.Id).subscribe(x => {
       this.DataSource = x;
@@ -68,6 +62,13 @@ export class DetalleComponent implements OnInit {
       this.Riesgo = this.DataSource[0].riesgo;
       this.Estado = this.DataSource[0].estado;
       this.MotivoR = this.DataSource[0].motivo_rechazo_aprobacion;
+      this.Dni=this.DataSource[0].usuario_dni;
+
+      this.loginService.GetUser(this.Dni).subscribe(x => {
+      this.Usuario = x;
+      this.Nombre = this.Usuario[0].nombre;
+      this.Apellido = this.Usuario[0].apellido;
+    })
     })
   }
 
