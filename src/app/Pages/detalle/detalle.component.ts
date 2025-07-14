@@ -82,7 +82,7 @@ export class DetalleComponent implements OnInit {
     let obj = {
       id: Number(this.Id),
       estado: nuevoEstado,
-      motivo_rechazo: this.MotivoR
+      motivo_rechazo_aprobacion: this.MotivoR
     }
     this.service.EditSolicitud(obj).subscribe(x => {
       if (x == false) {
