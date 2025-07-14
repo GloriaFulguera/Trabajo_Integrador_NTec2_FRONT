@@ -1,0 +1,31 @@
+<div class="d-flex flex-column h-100">
+  <!-- Contenedor de mensajes con scroll vertical y sin scroll horizontal -->
+  <div class="chat-body flex-grow-1 overflow-auto p-3">
+    <div *ngFor="let msg of messages" class="mb-2">
+      <div [ngClass]="{
+           'text-end': msg.from==='user',
+           'text-start': msg.from==='bot'
+         }">
+        <span class="badge chat-badge"
+              [ngClass]="{
+                'bg-primary': msg.from==='user',
+                'bg-light text-dark': msg.from==='bot'
+              }">
+         <i *ngIf="msg.from==='bot'" class="bi bi-robot me-3"></i>{{ msg.text }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input y botón de envío -->
+  <div class="input-group p-2 border-top">
+    <input type="text"
+           class="form-control"
+           placeholder="Escribe un mensaje..."
+           [(ngModel)]="entrada"
+           (keyup.enter)="send()">
+    <button class="btn btn-primary" (click)="send()">
+      <i class="bi bi-send"></i>
+    </button>
+  </div>
+</div>

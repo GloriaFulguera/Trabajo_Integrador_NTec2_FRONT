@@ -1,0 +1,16 @@
+:host { display: block; height: 100%; }
+
+.chat-body {
+  /* Solo scroll vertical y ocultar el horizontal */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chat-body .chat-badge {
+  display: inline-block;
+  max-width: 80%;
+  /* Permitir saltos de línea en palabras largas */
+  white-space: normal;
+  word-break: break-word;
+  font-size: 17px;
+}

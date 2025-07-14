@@ -16,6 +16,7 @@ import { DetalleComponent } from './Pages/detalle/detalle.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { LockComponent } from './Components/lock/lock.component';
 import { UsuariosComponent } from './Pages/usuarios/usuarios.component';
+import { ChatbotComponent } from './Components/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UsuariosComponent } from './Pages/usuarios/usuarios.component';
     DetalleComponent,
     RegisterComponent,
     LockComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
