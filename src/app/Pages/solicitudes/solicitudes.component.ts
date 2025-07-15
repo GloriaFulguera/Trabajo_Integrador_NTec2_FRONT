@@ -64,9 +64,10 @@ export class SolicitudesComponent implements OnInit {
     this.service.CreateSolicitud(solicitud).subscribe(x => {
       console.log("entro al create");
       if (x == false) {
-        alert("No se pudo crear la solicitud");
+        alert("No se pudo crear la solicitud, valide la información ingresada");
       }
       else {
+        alert("La solicitud se cargó correctamente.")
         this.ClearInput();
       }
     })

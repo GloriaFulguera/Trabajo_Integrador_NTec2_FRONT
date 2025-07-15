@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitudService } from '../../Services/solicitud.service';
 import { Router } from '@angular/router';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-historial',
@@ -48,5 +49,13 @@ export class HistorialComponent implements OnInit {
         this.DataSource = x;
       })
     }
+  }
+
+  Exportar_Excel(){
+    const elementTable=document.getElementById('tblSolicitudes');
+    const hoja:XLSX.WorkSheet=XLSX.utils.table_to_sheet(elementTable);
+    const libro:XLSX.WorkBook=XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(libro,hoja,'datos');
+    XLSX.writeFile(libro,'Solicitudes.xlsx');
   }
 }

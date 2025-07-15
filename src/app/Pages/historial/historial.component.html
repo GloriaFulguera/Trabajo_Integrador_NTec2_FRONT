@@ -8,19 +8,26 @@
     <div class="card-body p-2">
       <div class="d-flex align-items-center mb-4">
         <label for="filtro-estado" class="me-2 mb-0" style="font-weight: bold;">Filtrar por estado:</label>
-        <select id="filtro-estado" class="form-select w-auto shadow-soft" name="filterEstado" [(ngModel)]="Estado" (change)="GetSolicitudesByEstado()">
+        <select id="filtro-estado" class="form-select w-auto shadow-soft" name="filterEstado" [(ngModel)]="Estado"
+          (change)="GetSolicitudesByEstado()">
           <option value="">Todos</option>
           <option value="pendiente">Pendiente</option>
           <option value="aprobado">Aprobado</option>
           <option value="rechazado">Rechazado</option>
         </select>
+
+        <button class="btn btn-info btn-md ms-auto" title="Exportar a Excel" (click)="Exportar_Excel()">
+          <i class="bi bi-filetype-xlsx"></i>
+          Exportar Excel
+        </button>
       </div>
 
       <div class="table-responsive">
-        <table class="table table-striped table-hover table-sm align-middle text-center mb-0">
+        <table class="table table-striped table-hover table-sm align-middle text-center mb-0" id="tblSolicitudes">
           <thead class="bg-primary text-white">
             <tr>
               <th scope="col">Fecha</th>
+              <th scope="col">DNI</th>
               <th scope="col">Monto</th>
               <th scope="col">Cuotas</th>
               <th scope="col">Estado</th>
@@ -30,6 +37,7 @@
           <tbody>
             <tr *ngFor="let x of DataSource">
               <td>{{ x.fecha_alta }}</td>
+              <td>{{x.usuario_dni}}</td>
               <td>{{ x.monto | currency:'ARS ':'symbol' }}</td>
               <td>{{ x.cuotas }}</td>
               <td>
